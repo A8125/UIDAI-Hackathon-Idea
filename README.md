@@ -12,7 +12,7 @@ The source code for this project is hosted on GitHub: [A8125/UIDAI-Hackathon-Ide
 
 ## Key Features
 
-### 🎯 Core Algorithms
+###  Core Algorithms
 
 1. **K-Means Clustering** - Pattern Detection
    - Groups districts into service profiles
@@ -34,7 +34,7 @@ The source code for this project is hosted on GitHub: [A8125/UIDAI-Hackathon-Ide
    - Calculates center density and identifies service gaps
    - Recommends mobile van deployment locations
 
-### 📊 Visualizations & Reports
+### Visualizations & Reports
 
 - **Service Stress Heatmaps** - Visual identification of high-priority districts
 - **Cluster Analysis** - District grouping and profile characteristics
@@ -160,17 +160,17 @@ The system implements a 7-stage workflow:
 ## Impact
 
 ### Citizen Welfare
-- ✅ Reduced wait times through optimized capacity planning
-- ✅ Improved accessibility in underserved rural areas
-- ✅ Higher enrollment success rates via quality monitoring
-- ✅ Better service information through location verification
+- Reduced wait times through optimized capacity planning
+- Improved accessibility in underserved rural areas
+- Higher enrollment success rates via quality monitoring
+- Better service information through location verification
 
 ### Administrative Efficiency
-- 📈 Data-driven resource allocation
-- 🚨 Proactive problem detection
-- 📅 Strategic long-term planning
-- 🎯 Evidence-based policy decisions
-- 📊 Performance benchmarking
+- Data-driven resource allocation
+- Proactive problem detection
+- Strategic long-term planning
+- Evidence-based policy decisions
+- Performance benchmarking
 
 ## Privacy & Ethics
 
