@@ -112,14 +112,14 @@ class AadhaarDataGenerator:
                 
                 # Calculate enrollments
                 new_enrollments = int(population * base_rate * seasonal_factor * noise)
-                biometric_updates = int(new_enrollments * np.random.uniform(0.8, 1.2))
+                biometric_revisions = int(new_enrollments * np.random.uniform(0.8, 1.2))
                 
                 # Update saturation
                 current_saturation += (new_enrollments / population) * 0.5
                 current_saturation = min(current_saturation, 0.99)
                 
                 # Service metrics
-                total_requests = new_enrollments + biometric_updates
+                total_requests = new_enrollments + biometric_revisions
                 rejections = int(total_requests * np.random.uniform(0.01, 0.05))
                 successful = total_requests - rejections
                 
@@ -135,7 +135,7 @@ class AadhaarDataGenerator:
                     'new_enrollments': new_enrollments,
                     'male_enrollments': male_enrollments,
                     'female_enrollments': female_enrollments,
-                    'biometric_updates': biometric_updates,
+                    'biometric_revisions': biometric_revisions,
                     'total_requests': total_requests,
                     'successful_requests': successful,
                     'rejections': rejections,

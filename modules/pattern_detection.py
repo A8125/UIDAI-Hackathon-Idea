@@ -52,7 +52,7 @@ class DistrictClusterer:
         # Aggregate metrics per district
         features = timeseries_df.groupby('district_id').agg({
             'new_enrollments': ['mean', 'std', 'sum'],
-            'biometric_updates': ['mean', 'std', 'sum'],
+            'biometric_revisions': ['mean', 'std', 'sum'],
             'rejection_rate': ['mean', 'max'],
             'saturation_level': 'last',
             'active_centers': 'mean',
@@ -64,9 +64,9 @@ class DistrictClusterer:
         features.columns = ['_'.join(col).strip('_') for col in features.columns.values]
         features.rename(columns={'district_id': 'district_id'}, inplace=True)
         
-        # Calculate additional derived features
+        # Calculate derived features
         features['enrollment_volatility'] = features['new_enrollments_std'] / (features['new_enrollments_mean'] + 1)
-        features['update_to_enrollment_ratio'] = features['biometric_updates_sum'] / (features['new_enrollments_sum'] + 1)
+        features['revision_to_enrollment_ratio'] = features['biometric_revisions_sum'] / (features['new_enrollments_sum'] + 1)
         features['female_enrollment_pct'] = features['female_enrollments_sum'] / (
             features['female_enrollments_sum'] + features['male_enrollments_sum'])
         
@@ -162,7 +162,7 @@ class DistrictClusterer:
                 'size': len(cluster_data),
                 'avg_saturation': cluster_data['saturation_level_last'].mean(),
                 'avg_enrollments': cluster_data['new_enrollments_mean'].mean(),
-                'avg_updates': cluster_data['biometric_updates_mean'].mean(),
+                'avg_revisions': cluster_data['biometric_revisions_mean'].mean(),
                 'avg_rejection_rate': cluster_data['rejection_rate_mean'].mean(),
                 'urban_pct': cluster_data['is_urban'].mean(),
                 'rural_pct': cluster_data['is_rural'].mean(),
@@ -197,10 +197,10 @@ class DistrictClusterer:
             labels.append("Low Saturation")
         
         # Activity type
-        update_ratio = profile['avg_updates'] / (profile['avg_enrollments'] + 1)
-        if update_ratio > 1.5:
-            labels.append("Update-Heavy")
-        elif profile['avg_enrollments'] > profile['avg_updates']:
+        revision_ratio = profile['avg_revisions'] / (profile['avg_enrollments'] + 1)
+        if revision_ratio > 1.5:
+            labels.append("Revision-Heavy")
+        elif profile['avg_enrollments'] > profile['avg_revisions']:
             labels.append("Enrollment-Focused")
         else:
             labels.append("Balanced")
@@ -280,7 +280,7 @@ class DistrictClusterer:
             report.append(f"  Districts: {profile['size']}")
             report.append(f"  Avg Saturation: {profile['avg_saturation']:.2%}")
             report.append(f"  Avg Monthly Enrollments: {profile['avg_enrollments']:.0f}")
-            report.append(f"  Avg Monthly Updates: {profile['avg_updates']:.0f}")
+            report.append(f"  Avg Monthly Revisions: {profile['avg_revisions']:.0f}")
             report.append(f"  Avg Rejection Rate: {profile['avg_rejection_rate']:.2%}")
             report.append(f"  Urban Districts: {profile['urban_pct']:.1%}")
             report.append(f"  Female Enrollment: {profile['female_enrollment_pct']:.1%}")

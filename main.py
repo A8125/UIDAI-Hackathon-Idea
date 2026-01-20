@@ -8,7 +8,7 @@ This script orchestrates the complete data-to-decision pipeline:
 2. Pattern Detection (K-Means Clustering)
 3. Anomaly Detection (Isolation Forest)
 4. Forecasting (Prophet)
-5. Geographic Verification (Web Scraping)
+5. Geographic Verification (Location Analysis)
 6. Visualization and Reporting
 
 Author: UIDAI Analytics Team
@@ -30,7 +30,7 @@ from modules.data_generator import AadhaarDataGenerator
 from modules.pattern_detection import DistrictClusterer
 from modules.anomaly_detection import AnomalyDetector
 from modules.forecasting import SaturationForecaster
-from modules.web_scraping import GeographicVerifier, ProximityAnalyzer
+from modules.geographic_verification import GeographicVerifier, ProximityAnalyzer
 from modules.visualization import ServiceVisualizer
 
 
@@ -211,7 +211,7 @@ class AadhaarSevaOptimizer:
         use_mock : bool
             Use mock data instead of real API calls (recommended for demo)
         """
-        print("\n[STEP 5] GEOGRAPHIC VERIFICATION - Web Scraping")
+        print("\n[STEP 5] GEOGRAPHIC VERIFICATION - Location Analysis")
         print("-" * 80)
         
         if use_mock:
@@ -378,7 +378,7 @@ def main():
     print("║  • K-Means Clustering (Pattern Detection)                         ║")
     print("║  • Isolation Forest (Anomaly Detection)                           ║")
     print("║  • Prophet (Time-Series Forecasting)                              ║")
-    print("║  • Web Scraping (Geographic Verification)                         ║")
+    print("║  • Geographic Verification (Location Analysis)                  ║")
     print("╚════════════════════════════════════════════════════════════════════╝")
     print("\n")
     

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aadhaar Seva Optimizer | Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo-container">
+                <div class="logo-icon"></div>
+                <h1>Seva Optimizer</h1>
+            </div>
+            <nav class="side-nav">
+                <ul>
+                    <li class="active" data-tab="overview">
+                        <span class="icon">📊</span>
+                        <span class="label">Overview</span>
+                    </li>
+                    <li data-tab="clusters">
+                        <span class="icon">🧩</span>
+                        <span class="label">District Clusters</span>
+                    </li>
+                    <li data-tab="anomalies">
+                        <span class="icon">⚠️</span>
+                        <span class="label">Anomaly Tracker</span>
+                    </li>
+                    <li data-tab="forecasts">
+                        <span class="icon">📈</span>
+                        <span class="label">Saturation Forecasts</span>
+                    </li>
+                    <li data-tab="recommendations">
+                        <span class="icon">💡</span>
+                        <span class="label">Deployment Tips</span>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <p>UIDAI Analytics v1.0</p>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="search-container">
+                    <input type="text" placeholder="Search districts or clusters...">
+                </div>
+                <div class="user-profile">
+                    <span class="status-indicator online"></span>
+                    <span class="user-name">Admin</span>
+                </div>
+            </header>
+
+            <section id="overview" class="tab-content active">
+                <div class="section-header">
+                    <h2>System Overview</h2>
+                    <p>Real-time optimization metrics across India's service delivery network.</p>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Districts Analyzed</h3>
+                        <div class="value">766</div>
+                        <div class="trend up">+12% vs last month</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Active Centers</h3>
+                        <div class="value">52,430</div>
+                        <div class="trend">Stable</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Critical Anomalies</h3>
+                        <div class="value highlight">42</div>
+                        <div class="trend down">-5% from review</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Avg Saturation</h3>
+                        <div class="value">94.2%</div>
+                        <div class="trend up">+0.8% target</div>
+                    </div>
+                </div>
+                <div class="dashboard-visuals">
+                    <div class="card main-viz">
+                        <h3>Service Stress Heatmap</h3>
+                        <div id="heatmap-container" class="viz-placeholder">
+                            <!-- Canvas or SVG for Heatmap -->
+                            <div class="map-mock"></div>
+                        </div>
+                    </div>
+                    <div class="card secondary-viz">
+                        <h3>Cluster Distribution</h3>
+                        <div id="cluster-chart" class="viz-placeholder">
+                            <!-- Chart placeholder -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="clusters" class="tab-content">
+                <div class="section-header">
+                    <h2>District Performance Clusters</h2>
+                    <p>Categorization based on workload, rejection rates, and saturation levels.</p>
+                </div>
+                <!-- Content will be injected by script.js -->
+                <div class="cluster-grid" id="cluster-container"></div>
+            </section>
+
+            <section id="anomalies" class="tab-content">
+                <div class="section-header">
+                    <h2>Anomaly Detection</h2>
+                    <p>Identifying unusual service patterns using Isolation Forest.</p>
+                </div>
+                <div class="anomaly-table-container">
+                    <table id="anomaly-table">
+                        <thead>
+                            <tr>
+                                <th>Severity</th>
+                                <th>District</th>
+                                <th>Metric</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Rows injected by script.js -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="forecasts" class="tab-content">
+                <div class="section-header">
+                    <h2>Saturation Forecasts</h2>
+                    <p>Projected timelines to universal Aadhaar coverage per district.</p>
+                </div>
+                <div class="forecast-viz-container">
+                    <div class="card">
+                        <h3>National Projection</h3>
+                        <div class="forecast-chart-mock"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="recommendations" class="tab-content">
+                <div class="section-header">
+                    <h2>Actionable Recommendations</h2>
+                    <p>Evidence-based resource deployment strategies.</p>
+                </div>
+                <div class="recommendations-list" id="recommendations-container">
+                    <!-- Cards injected by script.js -->
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -53,11 +53,11 @@ class AnomalyDetector:
         df = df.sort_values(['district_id', 'date'])
         
         # Period-over-period changes
-        for col in ['new_enrollments', 'biometric_updates', 'rejection_rate', 'saturation_level']:
+        for col in ['new_enrollments', 'biometric_revisions', 'rejection_rate', 'saturation_level']:
             df[f'{col}_change'] = df.groupby('district_id')[col].pct_change()
         
         # Moving averages
-        for col in ['new_enrollments', 'biometric_updates', 'rejection_rate']:
+        for col in ['new_enrollments', 'biometric_revisions', 'rejection_rate']:
             df[f'{col}_ma3'] = df.groupby('district_id')[col].rolling(window=3, min_periods=1).mean().reset_index(0, drop=True)
             df[f'{col}_deviation'] = (df[col] - df[f'{col}_ma3']) / (df[f'{col}_ma3'] + 1)
         
@@ -81,9 +81,9 @@ class AnomalyDetector:
         """
         # Select features for anomaly detection
         anomaly_features = [
-            'new_enrollments', 'biometric_updates', 'rejection_rate', 'saturation_level',
-            'new_enrollments_change', 'biometric_updates_change', 'rejection_rate_change',
-            'new_enrollments_deviation', 'biometric_updates_deviation', 'rejection_rate_deviation'
+            'new_enrollments', 'biometric_revisions', 'rejection_rate', 'saturation_level',
+            'new_enrollments_change', 'biometric_revisions_change', 'rejection_rate_change',
+            'new_enrollments_deviation', 'biometric_revisions_deviation', 'rejection_rate_deviation'
         ]
         
         # Filter to features that exist
@@ -167,9 +167,9 @@ class AnomalyDetector:
                 anomaly_types.append('Rejection Spike')
                 severity_score += 3
             
-            # Unusual biometric update pattern
-            if abs(row.get('biometric_updates_deviation', 0)) > 2.0:
-                anomaly_types.append('Unusual Update Pattern')
+            # Unusual biometric revision pattern
+            if abs(row.get('biometric_revisions_deviation', 0)) > 2.0:
+                anomaly_types.append('Unusual Revision Pattern')
                 severity_score += 1
             
             # Saturation anomaly
@@ -323,7 +323,7 @@ class AnomalyDetector:
         
         return top_anomalies[['district_id', 'date', 'anomaly_score', 'severity', 
                              'anomaly_category', 'new_enrollments', 'rejection_rate',
-                             'biometric_updates']]
+                             'biometric_revisions']]
 
 
 if __name__ == "__main__":

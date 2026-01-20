@@ -7,7 +7,7 @@ optimizing Aadhaar service delivery using:
 - K-Means Clustering for pattern detection
 - Isolation Forest for anomaly detection
 - Prophet for time-series forecasting
-- Web scraping for geographic verification
+- Geographic verification for location validation
 """
 
 __version__ = "1.0.0"

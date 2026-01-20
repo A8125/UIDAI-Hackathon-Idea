@@ -1,8 +1,8 @@
 """
-Web Scraping Module
-====================
-Implements contextual web scraping for geographic verification.
-Uses public geographic records to verify center proximity.
+Location Analysis Module
+========================
+Implements contextual verification for geographic records.
+Uses public records to verify center proximity.
 """
 
 import requests
@@ -341,5 +341,5 @@ class ProximityAnalyzer:
 
 
 if __name__ == "__main__":
-    print("Web Scraping Module - Geographic Verification")
+    print("Location Analysis Module - Geographic Verification")
     print("Use this module to verify enrollment center locations")

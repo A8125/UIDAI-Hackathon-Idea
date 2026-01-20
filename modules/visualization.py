@@ -185,15 +185,15 @@ class ServiceVisualizer:
         # 1. Enrollment trends over time
         ax1 = fig.add_subplot(gs[0, :])
         monthly_enrollments = timeseries_df.groupby('year_month')['new_enrollments'].sum()
-        monthly_updates = timeseries_df.groupby('year_month')['biometric_updates'].sum()
+        monthly_revisions = timeseries_df.groupby('year_month')['biometric_revisions'].sum()
         
         x_pos = range(len(monthly_enrollments))
         ax1.plot(x_pos, monthly_enrollments.values, marker='o', linewidth=2, 
                 markersize=6, label='New Enrollments', color='#2E86AB')
-        ax1.plot(x_pos, monthly_updates.values, marker='s', linewidth=2, 
-                markersize=6, label='Biometric Updates', color='#A23B72')
+        ax1.plot(x_pos, monthly_revisions.values, marker='s', linewidth=2, 
+                markersize=6, label='Biometric Revisions', color='#A23B72')
         ax1.fill_between(x_pos, monthly_enrollments.values, alpha=0.3, color='#2E86AB')
-        ax1.fill_between(x_pos, monthly_updates.values, alpha=0.3, color='#A23B72')
+        ax1.fill_between(x_pos, monthly_revisions.values, alpha=0.3, color='#A23B72')
         ax1.set_xlabel('Month', fontsize=12)
         ax1.set_ylabel('Count', fontsize=12)
         ax1.set_title('National Enrollment Trends', fontsize=16, fontweight='bold')
@@ -244,7 +244,7 @@ class ServiceVisualizer:
         ax5 = fig.add_subplot(gs[2, :])
         cluster_metrics = features_df.groupby('cluster').agg({
             'new_enrollments_mean': 'mean',
-            'biometric_updates_mean': 'mean',
+            'biometric_revisions_mean': 'mean',
             'rejection_rate_mean': 'mean',
             'saturation_level_last': 'mean'
         })
@@ -254,8 +254,8 @@ class ServiceVisualizer:
         
         ax5.bar(x - 1.5*width, cluster_metrics['new_enrollments_mean'], width, 
                label='Avg Enrollments', color='#6C5CE7', edgecolor='black')
-        ax5.bar(x - 0.5*width, cluster_metrics['biometric_updates_mean'], width, 
-               label='Avg Updates', color='#A29BFE', edgecolor='black')
+        ax5.bar(x - 0.5*width, cluster_metrics['biometric_revisions_mean'], width, 
+               label='Avg Revisions', color='#A29BFE', edgecolor='black')
         ax5_twin = ax5.twinx()
         ax5_twin.bar(x + 0.5*width, cluster_metrics['rejection_rate_mean'] * 100, width, 
                     label='Rejection Rate (%)', color='#FD79A8', edgecolor='black', alpha=0.7)

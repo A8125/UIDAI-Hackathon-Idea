@@ -143,24 +143,25 @@ class DocumentationGenerator:
         
         # Create a stylized diagram using a table
         diagram_data = [
-            [Paragraph("<b>DATA SOURCES</b>", self.styles['CustomHeading3']), "", ""],
+            [
+                Paragraph("<b>IDENTIFYING NEEDS</b>", self.styles['CustomHeading3']), "", ""],
             ["", "⬇", ""],
-            [Paragraph("<b>ANONYMIZED DATA INGESTION</b><br/><font size=8>(Data Generator / UIDAI Datasets)</font>", self.styles['CustomBody']), "", ""],
+            [Paragraph("<b>SECURE DATA REVIEWS</b><br/><font size=8>(District Statistics / Broad Records)</font>", self.styles['CustomBody']), "", ""],
             ["", "⬇", ""],
             [
-                Paragraph("<b>ANALYSIS ENGINE</b>", self.styles['CustomBody']),
-                Paragraph("<b>PREDICTION ENGINE</b>", self.styles['CustomBody']),
-                Paragraph("<b>ENRICHMENT</b>", self.styles['CustomBody'])
+                Paragraph("<b>MANAGEMENT TOOLS</b>", self.styles['CustomBody']),
+                Paragraph("<b>FORECAST TOOLS</b>", self.styles['CustomBody']),
+                Paragraph("<b>LOCAL FINDINGS</b>", self.styles['CustomBody'])
             ],
             [
-                Paragraph("<font size=8>• K-Means Clustering<br/>• Isolation Forest</font>", self.styles['CustomBody']),
-                Paragraph("<font size=8>• Prophet Forecasting<br/>• Saturation Modeling</font>", self.styles['CustomBody']),
-                Paragraph("<font size=8>• Geographic Scraping<br/>• Pincode Verification</font>", self.styles['CustomBody'])
+                Paragraph("<font size=8>• Grouping Data<br/>• Finding Differences</font>", self.styles['CustomBody']),
+                Paragraph("<font size=8>• Future Estimates<br/>• Growth Levels</font>", self.styles['CustomBody']),
+                Paragraph("<font size=8>• Location Checks<br/>• Local Area Mapping</font>", self.styles['CustomBody'])
             ],
             ["", "⬇", ""],
-            [Paragraph("<b>DECISION SUPPORT LAYER</b><br/><font size=8>(Dashboard / Recommendation Engine)</font>", self.styles['CustomBody']), "", ""],
+            [Paragraph("<b>ADMINISTRATIVE SUPPORT</b><br/><font size=8>(Visual Board / Planning Tips)</font>", self.styles['CustomBody']), "", ""],
             ["", "⬇", ""],
-            [Paragraph("<b>ACTIONABLE RECOMMENDATIONS</b>", self.styles['CustomHeading3']), "", ""]
+            [Paragraph("<b>HELPFUL NEXT STEPS</b>", self.styles['CustomHeading3']), "", ""]
         ]
         
         table = Table(diagram_data, colWidths=[2.2*inch, 0.5*inch, 2.2*inch])
@@ -213,7 +214,7 @@ class DocumentationGenerator:
         self.story.append(Spacer(1, 0.2*inch))
         
         subtitle = Paragraph(
-            "Machine Learning-Powered Service Delivery Optimization",
+            "Helping Reach Every Citizen for Better Service Delivery",
             ParagraphStyle(name='subtitle', parent=self.styles['CustomBody'],
                           fontSize=14, alignment=TA_CENTER, textColor=HexColor('#424242'))
         )
@@ -222,10 +223,9 @@ class DocumentationGenerator:
         
         # System description
         desc = Paragraph(
-            """This document provides a comprehensive explanation of the algorithms, 
-            workflows, and implementation details of the Aadhaar Seva Optimizer system. 
-            The system uses advanced machine learning techniques to optimize Aadhaar 
-            enrollment service delivery across India.""",
+            """This document provides a full explanation of how we help improve center management 
+            across India. The project uses smart planning methods to help make services 
+            available to more people in more places.""",
             ParagraphStyle(name='desc', parent=self.styles['CustomBody'],
                           alignment=TA_CENTER, fontSize=12)
         )
@@ -236,9 +236,9 @@ class DocumentationGenerator:
         metadata = [
             ["Document Version:", "1.0"],
             ["Date:", datetime.now().strftime("%B %d, %Y")],
-            ["Organization:", "UIDAI Analytics Team"],
-            ["Classification:", "Public - Demonstration"],
-            ["Code Repository:", "github.com/A8125/UIDAI-Hackathon-Idea"],
+            ["Organization:", "Citizen Outreach Team"],
+            ["Classification:", "Public - Community Help"],
+            ["Project Focus:", "Universal Reach and Support"],
         ]
         
         table = Table(metadata, colWidths=[2.5*inch, 3*inch])
@@ -258,25 +258,28 @@ class DocumentationGenerator:
         
         content = [
             ("System Overview", 
-             """The Aadhaar Seva Optimizer is an advanced analytics system designed to 
-             optimize the delivery of Aadhaar enrollment and biometric update services 
-             across India. It leverages machine learning algorithms to identify patterns, 
-             detect anomalies, and predict future service demand."""),
+             """The Aadhaar Seva Assistant is a project designed to 
+             help make identity card services better in every district. 
+             It finds where people need help and helps plan for more 
+             centers to reach everyone."""
+),
             
             ("Key Capabilities",
-             """• <b>Pattern Detection:</b> Groups districts into service profiles using K-Means clustering<br/>
-             • <b>Anomaly Detection:</b> Identifies unusual enrollment patterns using Isolation Forest<br/>
-             • <b>Predictive Forecasting:</b> Projects saturation timelines using Prophet<br/>
-             • <b>Geographic Analysis:</b> Verifies center locations and identifies service gaps<br/>
-             • <b>Decision Support:</b> Generates actionable recommendations for resource deployment"""),
+             """• <b>Finding Patterns:</b> Groups similar areas together using smart logic<br/>
+             • <b>Watching for Changes:</b> Finds areas where enrollment needs are shifting<br/>
+             • <b>Predicting Growth:</b> Sees when an area will reach its goals<br/>
+             • <b>Location Support:</b> Checks local area maps to find gaps in services<br/>
+             • <b>Planning Support:</b> Offers tips for where to send extra help"""
+),
             
             ("Impact on Decision-Making",
-             """The system transforms raw enrollment data into strategic insights, enabling:<br/>
-             • Proactive deployment of mobile enrollment vans to underserved areas<br/>
-             • Early detection of quality issues through rejection rate monitoring<br/>
-             • Optimized resource allocation based on predicted demand<br/>
-             • Improved citizen welfare through reduced wait times and better accessibility<br/>
-             • Enhanced administrative efficiency through data-driven planning"""),
+             """The project helps leaders make better choices for citizens:<br/>
+             • Sending mobile help vans to areas that need them most<br/>
+             • Watching center work to make sure it is high quality<br/>
+             • Preparing for future needs based on growth trends<br/>
+             • Making it easier for people to get services nearby<br/>
+             • Using clear data to help plan for every district"""
+),
         ]
         
         for heading, text in content:
@@ -299,14 +302,14 @@ class DocumentationGenerator:
         self.story.append(Paragraph(pipeline_text, self.styles['CustomBody']))
         
         pipeline_stages = [
-            ["Stage", "Component", "Purpose"],
-            ["1. Ingestion", "Data Generator", "Load and clean UIDAI datasets; generate anonymized test data"],
-            ["2. Analysis", "Pattern Detection", "Cluster districts into service profiles using K-Means"],
-            ["3. Analysis", "Anomaly Detection", "Identify unusual patterns using Isolation Forest"],
-            ["4. Prediction", "Forecasting", "Project saturation levels using Prophet"],
-            ["5. Enrichment", "Geographic Verification", "Validate center locations via web scraping"],
-            ["6. Visualization", "Dashboard Generator", "Create heatmaps and decision support visuals"],
-            ["7. Action", "Recommendation Engine", "Generate deployment recommendations"],
+            ["Stage", "Area", "Goal"],
+            ["1. Gathering", "Broad Stats", "Load and review district records"],
+            ["2. Review", "Area Profiles", "Group districts with similar needs"],
+            ["3. Review", "Change Checks", "Find unexpected shifts in needs"],
+            ["4. Future", "Growth Plans", "Estimate when goals will be met"],
+            ["5. Local", "Map Support", "Check locations for better reach"],
+            ["6. Visuals", "Review Board", "Create clear maps and charts"],
+            ["7. Support", "Next Steps", "Suggest best ways to help people"],
         ]
         
         table = Table(pipeline_stages, colWidths=[0.7*inch, 1.8*inch, 3.5*inch])
@@ -353,45 +356,91 @@ class DocumentationGenerator:
         
         self.story.append(PageBreak())
     
-    def add_algorithm_kmeans(self):
-        """Add K-Means clustering algorithm explanation."""
-        self.story.append(Paragraph("Algorithm 1: K-Means Clustering", self.styles['CustomHeading1']))
+    def add_frontend_prototype(self):
+        """Add interactive prototype section."""
+        self.story.append(Paragraph("Interactive Frontend Prototype", self.styles['CustomHeading1']))
+        
+        self.story.append(Paragraph(
+            "The system includes a premium interactive dashboard for visualizing ML insights. "
+            "This prototype allows administrators to explore clustering results, track anomalies, "
+            "and view saturation forecasts in a modern, single-page application.",
+            self.styles['CustomBody']
+        ))
+        
+        features = [
+            ["Feature", "Description"],
+            ["Overview Dashboard", "High-level KPIs and service stress heatmap"],
+            ["District Clusters", "Interactive grouping of districts by service profile"],
+            ["Anomaly Tracker", "Real-time list of detected enrollment and rejection spikes"],
+            ["Forecast Explorer", "Visualization of projected saturation timelines"],
+            ["Deployment Tips", "Evidence-based recommendations for mobile van deployment"],
+        ]
+        
+        table = Table(features, colWidths=[2*inch, 4*inch])
+        table.setStyle(TableStyle([
+            ('BACKGROUND', (0, 0), (-1, 0), HexColor('#283593')),
+            ('TEXTCOLOR', (0, 0), (-1, 0), white),
+            ('ALIGN', (0, 0), (-1, -1), 'LEFT'),
+            ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+            ('FONTSIZE', (0, 0), (-1, -1), 9),
+            ('BOTTOMPADDING', (0, 0), (-1, -1), 8),
+            ('GRID', (0, 0), (-1, -1), 0.5, black),
+            ('ROWBACKGROUNDS', (0, 1), (-1, -1), [white, HexColor('#f5f5f5')]),
+        ]))
+        
+        self.story.append(table)
+        self.story.append(Spacer(1, 0.2*inch))
+        
+        self.story.append(Paragraph("System Requirements & Setup", self.styles['CustomHeading2']))
+        setup_text = """The dashboard is built using standard web technologies (HTML5, CSS3, JavaScript) 
+        and requires no external dependencies or Node.js environment. It can be served using 
+        Python's built-in HTTP server:"""
+        self.story.append(Paragraph(setup_text, self.styles['CustomBody']))
+        
+        self.story.append(Paragraph(
+            "# Navigate to frontend directory\ncd frontend\n\n# Start server\npython3 -m http.server 8000",
+            self.styles['CustomCode']
+        ))
+        
+        self.story.append(PageBreak())
+    
+    def add_method_area_grouping(self):
+        """Add area grouping explanation."""
+        self.story.append(Paragraph("Method 1: Grouping Similar Areas", self.styles['CustomHeading1']))
         
         sections = [
             ("Purpose", 
-             """K-Means clustering is used to group districts into distinct service profiles based on 
-             enrollment patterns, saturation levels, and service characteristics. This unsupervised 
-             learning approach reveals hidden structures in the data."""),
+             """Grouping data is used to find districts with similar needs for identity services. 
+             This helps leaders understand which areas need more help and what kind of 
+             support they need most."""),
             
             ("How It Works",
-             """K-Means partitions N districts into K clusters by:<br/>
-             1. Randomly initializing K cluster centroids<br/>
-             2. Assigning each district to the nearest centroid (using Euclidean distance)<br/>
-             3. Recalculating centroids as the mean of all districts in each cluster<br/>
-             4. Repeating steps 2-3 until convergence (centroids stop moving)"""),
+             """The grouping method sorts districts into sets by:<br/>
+             1. Looking at the main needs of each area<br/>
+             2. Finding districts that have close to the same numbers<br/>
+             3. Creating a few main groups that are easy to manage<br/>
+             4. Giving each group a clear name based on what they need"""),
             
-            ("Features Used",
-             """The algorithm analyzes multiple dimensions:<br/>
-             • Average monthly enrollments and standard deviation<br/>
-             • Ratio of biometric updates to new enrollments<br/>
-             • Rejection rate statistics (mean and maximum)<br/>
-             • Current saturation level<br/>
-             • Geographic type (urban/rural classification)<br/>
-             • Center availability and utilization<br/>
-             • Gender distribution in enrollments"""),
+            ("Info Used",
+             """The method looks at several things:<br/>
+             • Average monthly card sign-ups<br/>
+             • How often people ask to fix their records<br/>
+             • Number of people waiting for help<br/>
+             • How many people already have their cards<br/>
+             • Whether the area is a city or a village<br/>
+             • How many centers are available nearby"""),
             
-            ("Example Clusters Identified",
-             """• <b>Cluster 0:</b> Urban High-Saturation Update Hubs<br/>
-             • <b>Cluster 1:</b> Rural Low-Saturation Enrollment Frontlines<br/>
-             • <b>Cluster 2:</b> Mixed Moderate-Saturation Balanced Districts<br/>
-             • <b>Cluster 3:</b> Urban Enrollment-Heavy Growth Districts<br/>
-             • <b>Cluster 4:</b> Rural High-Quality Mature Districts"""),
+            ("Example Groups Found",
+             """• <b>Group 1:</b> Busy City Centers with many Record Fixes<br/>
+             • <b>Group 2:</b> Rural Areas with many New Sign-ups<br/>
+             • <b>Group 3:</b> Balanced Districts with moderate needs<br/>
+             • <b>Group 4:</b> Growing Areas with high future needs<br/>
+             • <b>Group 5:</b> High-Quality Mature Districts"""),
             
-            ("Why K-Means for Aadhaar",
-             """K-Means excels at revealing patterns that simple sorting cannot find. For example, 
-             a district might have high enrollments but also high rejections—this unique profile 
-             would be grouped together, enabling targeted interventions. The algorithm's speed 
-             and interpretability make it ideal for operational planning."""),
+            ("Why We Use Grouping",
+             """Grouping helps us see patterns that we might miss. For example, some districts 
+             might have many people but very few help centers. We can group these together 
+             to make sure we send help vans to all of them at once."""),
         ]
         
         for heading, text in sections:
@@ -399,66 +448,42 @@ class DocumentationGenerator:
             self.story.append(Paragraph(text, self.styles['CustomBody']))
             self.story.append(Spacer(1, 0.1*inch))
         
-        # Code sample
-        self.story.append(Paragraph("Implementation", self.styles['CustomHeading2']))
-        code = """from sklearn.cluster import KMeans
-from sklearn.preprocessing import StandardScaler
-
-# Standardize features
-scaler = StandardScaler()
-X_scaled = scaler.fit_transform(features)
-
-# Fit K-Means with 5 clusters
-kmeans = KMeans(n_clusters=5, random_state=42, n_init=10)
-cluster_labels = kmeans.fit_predict(X_scaled)"""
-        
-        self.story.append(Paragraph(code, self.styles['CustomCode']))
-        
-        # Add visual
-        self.story.append(Paragraph("Cluster Visualization", self.styles['CustomHeading2']))
-        self._add_image_if_exists('cluster_analysis.png', "PCA Visual of District Clustering Profiles")
-        
         self.story.append(PageBreak())
     
-    def add_algorithm_isolation_forest(self):
-        """Add Isolation Forest algorithm explanation."""
-        self.story.append(Paragraph("Algorithm 2: Isolation Forest", self.styles['CustomHeading1']))
+    def add_method_change_checking(self):
+        """Add change checking explanation."""
+        self.story.append(Paragraph("Method 2: Watching for Sudden Changes", self.styles['CustomHeading1']))
         
         sections = [
             ("Purpose",
-             """Isolation Forest detects anomalies—unusual enrollment patterns that may indicate quality 
-             issues, fraudulent activity, or operational problems. Unlike methods that define "normal" 
-             behavior, it explicitly seeks "rare and different" data points."""),
+             """Watching for changes helps find unusual patterns in sign-ups or fixes. 
+             This helps us see if a center is having trouble or if many more people 
+             suddenly need help in one area."""),
             
             ("How It Works",
-             """The algorithm isolates anomalies using random decision trees:<br/>
-             1. Randomly select a feature and a split value<br/>
-             2. Partition the data recursively (building a tree)<br/>
-             3. Anomalies are isolated faster (shorter path length in tree)<br/>
-             4. Repeat with multiple trees (forest) and average the path lengths<br/>
-             5. Points with short average paths are labeled as anomalies"""),
+             """The tool finds unusual days or weeks by:<br/>
+             1. Looking at what is normal for each area<br/>
+             2. Checking if any day is far outside the normal range<br/>
+             3. Flagging those areas so we can send more support staff<br/>
+             4. Helping us find and fix problems early before they grow"""),
             
-            ("Anomaly Categories Detected",
-             """The system identifies several types of anomalies:<br/>
-             • <b>Enrollment Spikes:</b> Sudden 200%+ increase in enrollments<br/>
-             • <b>Enrollment Drops:</b> Unexpected 50%+ decrease<br/>
-             • <b>High Rejection Rates:</b> Above 10% rejection rate<br/>
-             • <b>Rejection Spikes:</b> Sudden doubling of rejections<br/>
-             • <b>Saturation Issues:</b> Backward movement in saturation<br/>
-             • <b>Unusual Update Patterns:</b> Deviation from historical norms"""),
+            ("Changes We Watch For",
+             """We look for several types of events:<br/>
+             • <b>Unexpected Spikes:</b> Sudden large increases in people visiting<br/>
+             • <b>Unusual Drops:</b> Sudden decreases that might mean a center is closed<br/>
+             • <b>High Fix Needs:</b> When many people need to correct their records at once<br/>
+             • <b>Unusual Service Gaps:</b> Areas where service has slowed down unexpectedly"""),
             
-            ("Severity Classification",
-             """Each anomaly is assigned a severity level:<br/>
-             • <b>Critical:</b> Multiple severe indicators (e.g., high rejection + spike)<br/>
-             • <b>High:</b> Single severe indicator or multiple moderate ones<br/>
-             • <b>Medium:</b> Moderate deviation from normal patterns<br/>
-             • <b>Low:</b> Minor deviations requiring monitoring only"""),
+            ("Priority Levels",
+             """Each event is given a priority:<br/>
+             • <b>High Priority:</b> Many issues happening at once in one spot<br/>
+             • <b>Medium Priority:</b> A clear shift that needs more help soon<br/>
+             • <b>Low Priority:</b> Small changes that we should just keep an eye on"""),
             
-            ("Why Isolation Forest for Aadhaar",
-             """Isolation Forest excels at finding anomalies without needing labeled training data. 
-             It can detect a district with a 400% rejection spike even if this has never occurred before. 
-             The algorithm handles Aadhaar's "spiky" patterns (seasonal enrollment surges) better than 
-             statistical methods that assume normal distributions."""),
+            ("Why We Use This",
+             """This tool helps find problems even if they have never happened before. 
+             It ensures that citizens always get good service and that centers are 
+             ready for any sudden changes in the number of visitors."""),
         ]
         
         for heading, text in sections:
@@ -466,68 +491,37 @@ cluster_labels = kmeans.fit_predict(X_scaled)"""
             self.story.append(Paragraph(text, self.styles['CustomBody']))
             self.story.append(Spacer(1, 0.1*inch))
         
-        # Code sample
-        self.story.append(Paragraph("Implementation", self.styles['CustomHeading2']))
-        code = """from sklearn.ensemble import IsolationForest
-
-# Train Isolation Forest
-iso_forest = IsolationForest(
-    contamination=0.1,  # Expected 10% anomalies
-    random_state=42,
-    n_estimators=100
-)
-
-# Predict: -1 for anomalies, 1 for normal
-predictions = iso_forest.fit_predict(features)
-anomaly_scores = iso_forest.score_samples(features)"""
-        
-        self.story.append(Paragraph(code, self.styles['CustomCode']))
-        
-        # Add visual
-        self.story.append(Paragraph("Anomaly Analysis", self.styles['CustomHeading2']))
-        self._add_image_if_exists('anomaly_detection.png', "Distribution and Categorization of Detected Anomalies")
-        
         self.story.append(PageBreak())
     
-    def add_algorithm_prophet(self):
-        """Add Prophet forecasting algorithm explanation."""
-        self.story.append(Paragraph("Algorithm 3: Prophet (Forecasting)", self.styles['CustomHeading1']))
+    def add_method_growth_forecasting(self):
+        """Add growth forecasting explanation."""
+        self.story.append(Paragraph("Method 3: Growth Planning", self.styles['CustomHeading1']))
         
         sections = [
             ("Purpose",
-             """Prophet forecasts when districts will reach Aadhaar saturation (99%+ adult coverage). 
-             This enables proactive planning for resource reallocation and helps prioritize districts 
-             that need accelerated enrollment drives."""),
+             """Growth planning helps see when districts will reach their goals for card 
+             coverage. This helps us know when to move resources to other areas that 
+             still need more help."""),
             
             ("How It Works",
-             """Prophet decomposes time series into components:<br/>
-             1. <b>Trend:</b> Long-term growth pattern (logistic growth for saturation)<br/>
-             2. <b>Seasonality:</b> Yearly patterns (e.g., school admission cycles)<br/>
-             3. <b>Holidays/Events:</b> Special periods with enrollment spikes<br/>
-             4. <b>Residual:</b> Unexplained variation<br/><br/>
-             The model fits these components using a generalized additive model (GAM) and projects 
-             them forward to generate forecasts with confidence intervals."""),
+             """The model looks at several pieces for planning:<br/>
+             1. <b>Trends:</b> Long-term growth goals for each area<br/>
+             2. <b>Seasons:</b> Yearly times when many more people need help (like school start times)<br/>
+             3. <b>Events:</b> Special camps or campaigns that bring in more people<br/><br/>
+             By looking at these, the tool gives a clear view of how much work is left 
+             to do in each district."""),
             
-            ("Aadhaar-Specific Adaptations",
-             """The implementation includes domain-specific customizations:<br/>
-             • <b>Logistic Growth:</b> Saturation has an upper bound (99%), not unlimited growth<br/>
-             • <b>Holiday Effects:</b> Enrollment spikes during April-May and January-February<br/>
-             • <b>Multiplicative Seasonality:</b> Seasonal patterns scale with trend magnitude<br/>
-             • <b>Changepoint Detection:</b> Identifies when policies or campaigns altered trends"""),
+            ("Planning Support",
+             """For each district, the tool provides:<br/>
+             • Estimated card coverage for the next year<br/>
+             • Expected month when goals will be met<br/>
+             • Range of possible outcomes to help plan for different needs<br/>
+             • A clear map of growth over time"""),
             
-            ("Forecast Outputs",
-             """For each district, the system provides:<br/>
-             • Projected saturation level for next 12 months<br/>
-             • Expected date of reaching 99% saturation<br/>
-             • Confidence intervals (uncertainty bounds)<br/>
-             • Trend decomposition showing seasonal vs. long-term growth"""),
-            
-            ("Why Prophet for Aadhaar",
-             """Prophet handles Aadhaar data's challenges better than ARIMA:<br/>
-             • <b>Missing Data:</b> Robust to gaps in enrollment records<br/>
-             • <b>Irregular Events:</b> Explicitly models campaign-driven spikes<br/>
-             • <b>Multiple Seasonality:</b> Captures both yearly and quarterly patterns<br/>
-             • <b>Interpretability:</b> Decomposed components aid policy understanding"""),
+            ("Why We Use This",
+             """This tool helps center managers plan ahead for the next 12 months. 
+             It ensures that we don't have too many centers in areas that are already 
+             well-covered, so we can focus on areas that are still growing."""),
         ]
         
         for heading, text in sections:
@@ -535,78 +529,49 @@ anomaly_scores = iso_forest.score_samples(features)"""
             self.story.append(Paragraph(text, self.styles['CustomBody']))
             self.story.append(Spacer(1, 0.1*inch))
         
-        # Code sample
-        self.story.append(Paragraph("Implementation", self.styles['CustomHeading2']))
-        code = """from prophet import Prophet
-
-# Prepare Prophet dataframe (requires 'ds' and 'y' columns)
-prophet_df = pd.DataFrame({
-    'ds': dates,
-    'y': saturation_levels,
-    'cap': 0.99  # Upper bound
-})
-
-# Initialize and fit model
-model = Prophet(growth='logistic', yearly_seasonality=True)
-model.fit(prophet_df)
-
-# Generate forecast
-future = model.make_future_dataframe(periods=12, freq='M')
-future['cap'] = 0.99
-forecast = model.predict(future)"""
-        
-        self.story.append(Paragraph(code, self.styles['CustomCode']))
-        
-        # Add visual
-        self.story.append(Paragraph("Forecast Analysis", self.styles['CustomHeading2']))
-        self._add_image_if_exists('forecast_sample.png', "Saturation Forecast with Confidence Intervals")
-        
         self.story.append(PageBreak())
     
-    def add_algorithm_web_scraping(self):
-        """Add web scraping methodology."""
-        self.story.append(Paragraph("Methodology: Geographic Verification", self.styles['CustomHeading1']))
+    def add_method_map_support(self):
+        """Add map support methodology."""
+        self.story.append(Paragraph("Method 4: Map Support", self.styles['CustomHeading1']))
         
         sections = [
             ("Purpose",
-             """Contextual web scraping verifies enrollment center locations using public geographic 
-             records. This ensures that centers are correctly mapped, calculates center density per 
-             district, and identifies service gaps."""),
+             """Map support checks center locations using public records. This ensures that 
+             all centers are in the right places and helps us find areas that do not 
+             have any centers nearby."""),
             
-            ("Data Sources",
-             """The system uses publicly available APIs and databases:<br/>
-             • <b>India Post Office API:</b> Validates pincode information<br/>
-             • <b>Geographic Coordinates:</b> District and state mapping<br/>
-             • <b>Population Census Data:</b> For density calculations<br/>
-             • All data sources are public; no private information is accessed"""),
+            ("Info Sources",
+             """The project looks at public records and maps:<br/>
+             • <b>Public Post Office Lists:</b> Checks pincode information<br/>
+             • <b>Public Location Records:</b> Checks district and state names<br/>
+             • <b>Broad Population Records:</b> For density checks<br/>
+             • All info is from public sources and is kept anonymous"""),
             
-            ("Verification Process",
-             """1. Extract unique pincodes from enrollment center database<br/>
-             2. Query public API for each pincode (with respectful rate limiting)<br/>
-             3. Validate district and state information<br/>
-             4. Cross-reference with internal district master data<br/>
-             5. Flag discrepancies for manual review"""),
+            ("Check Process",
+             """1. Review pincodes from center lists<br/>
+             2. Check public records for each area<br/>
+             3. Validate district and state names<br/>
+             4. Flag any differences for review<br/>
+             5. Update maps with correct center info"""),
             
-            ("Center Density Analysis",
-             """The system calculates key metrics:<br/>
+            ("Service Reach Check",
+             """The tool looks at several things:<br/>
              • Centers per lakh (100,000) population<br/>
-             • Total daily enrollment capacity per district<br/>
-             • Average utilization rate<br/>
-             • Proximity analysis (distance between centers)<br/>
-             • Geographic clustering patterns"""),
+             • How many people a center can help each day<br/>
+             • How busy each center is on average<br/>
+             • Distance between centers in one district"""),
             
-            ("Service Gap Identification",
-             """Districts are flagged as underserved based on:<br/>
-             • Less than 1 center per lakh population (benchmark)<br/>
-             • High utilization (>90%) indicating capacity constraints<br/>
-             • Large geographic area with sparse center distribution<br/>
-             • Priority score combines shortage severity and population impact"""),
+            ("Finding Gaps",
+             """Areas are flagged for more help if:<br/>
+             • There are too few centers for the number of people<br/>
+             • Centers are too busy to help everyone quickly<br/>
+             • Large areas have no centers nearby"""),
             
-            ("Ethical Considerations",
-             """• No personal information is collected or processed<br/>
-             • Rate limiting respects API provider bandwidth<br/>
-             • All data is anonymized and aggregated<br/>
-             • Compliance with data protection regulations"""),
+            ("Safety and Privacy",
+             """• No personal info is used at any time<br/>
+             • All data is grouped by district for privacy<br/>
+             • We follow all rules for data use and citizen safety"""),
         ]
         
         for heading, text in sections:
@@ -620,51 +585,38 @@ forecast = model.predict(future)"""
         """Add complete workflow description."""
         self.story.append(Paragraph("Complete Workflow", self.styles['CustomHeading1']))
         
-        workflow_text = """The Aadhaar Seva Optimizer executes a seven-stage workflow that transforms 
-        raw enrollment data into actionable recommendations:"""
+        workflow_text = """The project follows a simple seven-step process to help citizens 
+        and managers reach their goals:"""
         self.story.append(Paragraph(workflow_text, self.styles['CustomBody']))
         
         workflow_steps = [
-            ("Step 1: Data Ingestion",
-             """Load anonymized district enrollment data, time series records, and center information. 
-             Data is cleaned, validated, and prepared for analysis. Missing values are handled, dates 
-             are standardized, and categorical variables are encoded."""),
+            ("Step 1: Gathering Info",
+             """We look at broad district records and sign-up numbers. All data is 
+             cleaned and prepared to find the best ways to help."""),
             
-            ("Step 2: Pattern Detection",
-             """Apply K-Means clustering to identify 5 district service profiles. Features are standardized, 
-             optimal K is determined using elbow method, and interpretable cluster labels are generated 
-             based on saturation level, enrollment activity, and geographic type."""),
+            ("Step 2: Grouping Areas",
+             """We group districts with similar needs. This helps us see which areas 
+             need city-style support and which need rural-style help."""),
             
-            ("Step 3: Anomaly Detection",
-             """Run Isolation Forest on time series data to detect unusual patterns. Period-over-period 
-             changes are calculated, moving averages establish baselines, and deviations are scored. 
-             Anomalies are categorized by type and assigned severity levels."""),
+            ("Step 3: Checking for Changes",
+             """We watch for any sudden shifts in sign-ups or record fixes. This 
+             helps us catch small problems before they grow into large ones."""),
             
-            ("Step 4: Predictive Forecasting",
-             """Use Prophet to forecast saturation for sample districts. Models account for logistic growth, 
-             seasonal patterns, and enrollment campaigns. Forecasts project 12 months ahead with confidence 
-             intervals, identifying when districts will reach 99% saturation."""),
+            ("Step 4: Looking Ahead",
+             """We estimate when each area will meet its goals for card reach. This 
+             helps us plan where to move staff in the coming months."""),
             
-            ("Step 5: Geographic Verification",
-             """Validate center locations via web scraping of public pincode databases. Calculate center 
-             density per district, identify underserved areas, and compute priority scores for mobile 
-             van deployment. Proximity analysis ensures optimal geographic distribution."""),
+            ("Step 5: Local Support",
+             """We check center locations against local maps. This helps us find gaps 
+             and plan where to send mobile help vans."""),
             
-            ("Step 6: Visualization",
-             """Generate comprehensive dashboards including:<br/>
-             • Heatmaps showing service stress points across districts<br/>
-             • Geographic distribution of clusters and saturation levels<br/>
-             • Trend analysis of enrollments over time<br/>
-             • Anomaly distribution and severity matrices<br/>
-             • Cluster characteristic comparisons"""),
+            ("Step 6: Clear Visuals",
+             """We create clear charts and maps for managers. These visual boards 
+             make it easy to see where help is needed most at a glance."""),
             
-            ("Step 7: Decision Support",
-             """Synthesize insights into actionable recommendations:<br/>
-             • Deploy mobile vans to top N underserved districts<br/>
-             • Investigate districts with critical anomalies<br/>
-             • Launch awareness campaigns in low-saturation areas<br/>
-             • Optimize center operations in high-utilization zones<br/>
-             • Prioritize resources based on forecasted demand"""),
+            ("Step 7: Planning Tips",
+             """We offer clear tips for localized support. Leaders can use these 
+             to send help where it will make the most difference for citizens."""),
         ]
         
         for heading, text in workflow_steps:
@@ -695,184 +647,46 @@ forecast = model.predict(future)"""
         self.story.append(Spacer(1, 0.2*inch))
         self.story.append(Paragraph("Administrative Efficiency Gains", self.styles['CustomHeading2']))
         
-        admin_benefits = """For UIDAI and partnering agencies, the system delivers:<br/><br/>
-        <b>1. Data-Driven Resource Allocation:</b> Replace intuition-based planning with quantitative 
-        prioritization. Deploy mobile vans, staff, and equipment where impact is maximized.<br/><br/>
-        <b>2. Proactive Problem Detection:</b> Identify quality issues, fraud patterns, and operational 
-        bottlenecks before they become widespread. Faster intervention reduces systemic costs.<br/><br/>
-        <b>3. Strategic Planning:</b> Saturation forecasts inform long-term capacity planning. 
-        Agencies can phase down centers in mature districts and focus on growth areas.<br/><br/>
-        <b>4. Performance Monitoring:</b> Cluster analysis enables peer comparisons. Districts can 
-        benchmark against similar profiles to identify best practices.<br/><br/>
-        <b>5. Evidence-Based Policy:</b> Quantitative insights support budget requests, policy changes, 
-        and campaign design with concrete data rather than anecdotes."""
+        admin_benefits = """For leaders and managers, the project offers:<br/><br/>
+        <b>1. Better Use of Resources:</b> Place help and staff where they have the 
+        most impact based on real needs.<br/><br/>
+        <b>2. Early Problem Finding:</b> Find bottlenecks or service slowdowns early. 
+        Taking action quickly saves time and helps more people.<br/><br/>
+        <b>3. Planning for Growth:</b> See which areas are almost meeting their goals 
+        and which need more support to grow.<br/><br/>
+        <b>4. Balanced Support:</b> Compare similar districts to see which ones are 
+        doing well and why, so others can learn from them.<br/><br/>
+        <b>5. Fact-Based Planning:</b> Use clear records and growth trends to help 
+        plan for budgets and future needs."""
         
         self.story.append(Paragraph(admin_benefits, self.styles['CustomBody']))
         
         self.story.append(PageBreak())
     
-    def add_technical_requirements(self):
-        """Add technical requirements section."""
-        self.story.append(Paragraph("Technical Requirements", self.styles['CustomHeading1']))
+    def add_project_summary(self):
+        """Add a simple project summary."""
+        self.story.append(Paragraph("Project Summary", self.styles['CustomHeading1']))
         
-        self.story.append(Paragraph("Software Dependencies", self.styles['CustomHeading2']))
+        summary_text = """The Aadhaar Seva Assistant is a helpful project for identity 
+        services in India. By using simple grouping, change checking, and growth 
+        estimates, we can help people get their cards faster and fix their records 
+        more easily.<br/><br/>
         
-        deps_data = [
-            ["Library", "Version", "Purpose"],
-            ["pandas", "≥1.5.0", "Data manipulation and analysis"],
-            ["numpy", "≥1.23.0", "Numerical computing"],
-            ["scikit-learn", "≥1.2.0", "Machine learning algorithms"],
-            ["prophet", "≥1.1.0", "Time series forecasting"],
-            ["seaborn", "≥0.12.0", "Statistical visualization"],
-            ["matplotlib", "≥3.6.0", "Plotting and charts"],
-            ["requests", "≥2.28.0", "HTTP requests for web scraping"],
-            ["beautifulsoup4", "≥4.11.0", "HTML parsing"],
-            ["reportlab", "≥3.6.0", "PDF generation"],
-        ]
+        This project helps both citizens and managers. Citizens get better reach and 
+        shorter wait times. Managers get better planning and support tools to reach 
+        every corner of their district. By working together with clear data, we can 
+        make sure no one is left behind.<br/><br/>
         
-        deps_table = Table(deps_data, colWidths=[1.8*inch, 1.2*inch, 3*inch])
-        deps_table.setStyle(TableStyle([
-            ('BACKGROUND', (0, 0), (-1, 0), HexColor('#283593')),
-            ('TEXTCOLOR', (0, 0), (-1, 0), white),
-            ('ALIGN', (0, 0), (-1, -1), 'LEFT'),
-            ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
-            ('FONTSIZE', (0, 0), (-1, -1), 9),
-            ('BOTTOMPADDING', (0, 0), (-1, -1), 8),
-            ('GRID', (0, 0), (-1, -1), 0.5, black),
-            ('ROWBACKGROUNDS', (0, 1), (-1, -1), [white, HexColor('#f5f5f5')]),
-        ]))
+        As the project grows, we hope it will continue to help reach every citizen 
+        with the services they need to succeed. Our goal is a helpful, efficient, 
+        and citizen-first approach to service delivery."""
         
-        self.story.append(deps_table)
-        
-        self.story.append(Spacer(1, 0.2*inch))
-        self.story.append(Paragraph("Data Requirements", self.styles['CustomHeading2']))
-        
-        data_req = """The system requires three primary datasets:<br/><br/>
-        <b>1. District Master Data:</b> District ID, name, state, population, geographic type<br/>
-        <b>2. Time Series Enrollment Data:</b> Monthly enrollments, updates, rejections by district<br/>
-        <b>3. Center Information:</b> Center ID, location (lat/long), pincode, capacity, utilization<br/><br/>
-        All data must be anonymized and aggregated at district level. No personally identifiable 
-        information (PII) should be included. The system generates synthetic test data for demonstration."""
-        
-        self.story.append(Paragraph(data_req, self.styles['CustomBody']))
-        
-        self.story.append(Spacer(1, 0.2*inch))
-        self.story.append(Paragraph("Computational Resources", self.styles['CustomHeading2']))
-        
-        compute_req = """<b>Minimum Requirements:</b><br/>
-        • CPU: 4 cores, 2.0 GHz or equivalent<br/>
-        • RAM: 8 GB<br/>
-        • Storage: 2 GB available space<br/>
-        • Python: 3.8 or higher<br/><br/>
-        <b>Recommended for Production:</b><br/>
-        • CPU: 8+ cores, 2.5 GHz<br/>
-        • RAM: 16 GB<br/>
-        • Storage: 10 GB (for historical data retention)<br/>
-        • Python: 3.10 or higher"""
-        
-        self.story.append(Paragraph(compute_req, self.styles['CustomBody']))
-        
-        self.story.append(PageBreak())
-    
-    def add_usage_instructions(self):
-        """Add usage instructions."""
-        self.story.append(Paragraph("Usage Instructions", self.styles['CustomHeading1']))
-        
-        self.story.append(Paragraph("Installation", self.styles['CustomHeading2']))
-        
-        install_steps = """1. Clone or download the Aadhaar Seva Optimizer codebase<br/>
-        2. Install Python 3.8 or higher if not already installed<br/>
-        3. Install dependencies: <font name="Courier">pip install -r requirements.txt</font><br/>
-        4. Verify installation: <font name="Courier">python -c "import sklearn, prophet"</font>"""
-        
-        self.story.append(Paragraph(install_steps, self.styles['CustomBody']))
-        
-        self.story.append(Spacer(1, 0.15*inch))
-        self.story.append(Paragraph("Running the System", self.styles['CustomHeading2']))
-        
-        usage_code = """# Navigate to project directory
-cd aadhaar_seva_optimizer
-
-# Run complete pipeline with generated test data
-python main.py
-
-# Output will be saved to the 'output/' directory"""
-        
-        self.story.append(Paragraph(usage_code, self.styles['CustomCode']))
-        
-        usage_text = """The system will automatically:<br/>
-        • Generate anonymized test datasets<br/>
-        • Execute all seven pipeline stages<br/>
-        • Create visualizations and reports<br/>
-        • Save results to the output directory<br/><br/>
-        Execution typically takes 2-5 minutes depending on system specifications."""
-        
-        self.story.append(Paragraph(usage_text, self.styles['CustomBody']))
-        
-        self.story.append(Spacer(1, 0.15*inch))
-        self.story.append(Paragraph("Output Files", self.styles['CustomHeading2']))
-        
-        outputs = [
-            ["File", "Description"],
-            ["cluster_profiles.csv", "District cluster characteristics"],
-            ["cluster_analysis.png", "Visual representation of clusters"],
-            ["top_anomalies.csv", "Most severe anomalies detected"],
-            ["anomaly_detection.png", "Anomaly analysis visualizations"],
-            ["saturation_forecast.csv", "Saturation projection for sample districts"],
-            ["forecast_sample.png", "Example forecast visualization"],
-            ["center_density.csv", "Center availability by district"],
-            ["service_gaps.csv", "Underserved districts prioritized"],
-            ["service_stress_heatmap.png", "District stress point heatmap"],
-            ["comprehensive_dashboard.png", "Multi-metric analytics dashboard"],
-            ["recommendations.json", "Actionable recommendations"],
-        ]
-        
-        outputs_table = Table(outputs, colWidths=[2.5*inch, 3.5*inch])
-        outputs_table.setStyle(TableStyle([
-            ('BACKGROUND', (0, 0), (-1, 0), HexColor('#283593')),
-            ('TEXTCOLOR', (0, 0), (-1, 0), white),
-            ('ALIGN', (0, 0), (-1, -1), 'LEFT'),
-            ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
-            ('FONTSIZE', (0, 0), (-1, -1), 9),
-            ('BOTTOMPADDING', (0, 0), (-1, -1), 8),
-            ('GRID', (0, 0), (-1, -1), 0.5, black),
-            ('ROWBACKGROUNDS', (0, 1), (-1, -1), [white, HexColor('#f5f5f5')]),
-        ]))
-        
-        self.story.append(outputs_table)
-        
-        self.story.append(PageBreak())
-    
-    def add_conclusion(self):
-        """Add conclusion."""
-        self.story.append(Paragraph("Conclusion", self.styles['CustomHeading1']))
-        
-        conclusion_text = """The Aadhaar Seva Optimizer represents a significant advancement in data-driven 
-        governance for India's digital identity infrastructure. By combining three powerful machine learning 
-        algorithms—K-Means Clustering, Isolation Forest, and Prophet—with geographic verification and 
-        comprehensive visualization, the system transforms raw enrollment data into strategic insights.<br/><br/>
-        
-        The impact extends beyond mere efficiency gains. By identifying underserved populations, detecting 
-        quality issues early, and optimizing resource deployment, the system directly improves citizen welfare. 
-        Rural communities gain better access to services, wait times are reduced, and enrollment success 
-        rates improve.<br/><br/>
-        
-        For administrators, the system enables evidence-based decision-making at scale. Rather than relying 
-        on intuition or outdated reports, policymakers can act on real-time analytics with quantified 
-        priorities and forecasted outcomes. This data-to-decision pipeline exemplifies how machine learning 
-        can augment human expertise in complex social systems.<br/><br/>
-        
-        As Aadhaar continues to evolve as a foundational digital infrastructure, systems like the Seva 
-        Optimizer will play an increasingly critical role in ensuring equitable, efficient, and citizen-centric 
-        service delivery across India's diverse landscape."""
-        
-        self.story.append(Paragraph(conclusion_text, self.styles['CustomBody']))
+        self.story.append(Paragraph(summary_text, self.styles['CustomBody']))
         
         self.story.append(Spacer(1, 0.3*inch))
         
         closing = Paragraph(
-            "Code Repository: <a href='https://github.com/A8125/UIDAI-Hackathon-Idea.git' color='blue'>https://github.com/A8125/UIDAI-Hackathon-Idea.git</a><br/><br/>"
-            "For technical support or questions, please contact the UIDAI Analytics Team.",
+            "For technical support or questions, please contact the Outreach Team.",
             ParagraphStyle(name='closing', parent=self.styles['CustomBody'],
                           alignment=TA_CENTER, fontSize=10, textColor=HexColor('#666666'))
         )
@@ -889,16 +703,15 @@ python main.py
         self.add_cover_page()
         self.add_executive_summary()
         self.add_architecture_overview()
-        self.add_algorithm_kmeans()
-        self.add_algorithm_isolation_forest()
-        self.add_algorithm_prophet()
-        self.add_algorithm_web_scraping()
+        self.add_method_area_grouping()
+        self.add_method_change_checking()
+        self.add_method_growth_forecasting()
+        self.add_method_map_support()
         self.add_analysis_results()
+        self.add_frontend_prototype()
         self.add_workflow()
         self.add_impact_assessment()
-        self.add_technical_requirements()
-        self.add_usage_instructions()
-        self.add_conclusion()
+        self.add_project_summary()
         
         # Build PDF
         self.doc.build(self.story)
